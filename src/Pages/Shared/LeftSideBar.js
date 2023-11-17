@@ -4,7 +4,7 @@ const LeftSideBar = () => {
     return (
         <body class="min-h-screen hidden lg:block">
 
-            <div class="w-80 px-2 min-h-screen flex flex-col py-2 shadow-lg">
+            <div class="w-80 px-2 min-h-screen flex flex-col py-2">
                 <div class="group">
                     <div class=" mt-1">
                         <a href="/" class="hover:bg-gray-200 px-2.5 py-1.5 flex items-center space-x-3 rounded-md">
@@ -35,8 +35,8 @@ const LeftSideBar = () => {
                             </div>
                             <div class="flex flex-col justify-center content-start">
                                 <h2 class="font-semibold">Pages</h2>
-                                <div class="text-xs text-blue-400 flex justify-start items-center space-x-1">
-                                    <span class="w-2 h-2 bg-blue-400 inline-block rounded-full"></span>
+                                <div class="text-xs text-primary flex justify-start items-center space-x-1">
+                                    <span class="w-2 h-2 bg-primary inline-block rounded-full"></span>
                                     <span>9+ new</span>
                                 </div>
                             </div>
@@ -49,8 +49,8 @@ const LeftSideBar = () => {
                             </div>
                             <div class="flex flex-col justify-center content-start">
                                 <h2 class="font-semibold">Groups</h2>
-                                <div class="text-xs text-blue-400 flex justify-start items-center space-x-1">
-                                    <span class="w-2 h-2 bg-blue-400 inline-block rounded-full"></span>
+                                <div class="text-xs text-primary flex justify-start items-center space-x-1">
+                                    <span class="w-2 h-2 bg-primary inline-block rounded-full"></span>
                                     <span>1 new</span>
                                 </div>
                             </div>
@@ -63,8 +63,8 @@ const LeftSideBar = () => {
                             </div>
                             <div class="flex flex-col justify-center content-start">
                                 <h2 class="font-semibold">Marketplace</h2>
-                                <div class="text-xs text-blue-400 flex justify-start items-center space-x-1">
-                                    <span class="w-2 h-2 bg-blue-400 inline-block rounded-full"></span>
+                                <div class="text-xs text-primary flex justify-start items-center space-x-1">
+                                    <span class="w-2 h-2 bg-primary inline-block rounded-full"></span>
                                     <span>1 new</span>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@ const LeftSideBar = () => {
                     <div class="flex justify-between items-center">
                         <h3 class=" font-semibold text-lg">Your Shortcuts</h3>
                     </div>
-                    <div class="mt-1">
+                    <div class="m-2">
                         <a href="/" class="hover:bg-gray-200 px-2.5 py-1.5 flex items-center space-x-3 rounded-md">
                             <div class="w-10 h-10 rounded-lg overflow-hidden">
                                 <img class="w-full" src="https://scontent.fdac157-1.fna.fbcdn.net/v/t39.30808-6/240355291_906587126873428_627206812571233428_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=bWnorf9FkdEAX9-wrHk&_nc_ht=scontent.fdac157-1.fna&oh=00_AfAQQrV7ZdqSBGjOYEh4BLnaDSK2xR_TVwpyH-dziOOzJA&oe=655D0541" alt="Appifylab" />
