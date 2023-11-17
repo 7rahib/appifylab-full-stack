@@ -1,10 +1,12 @@
 import React from 'react';
 import { GoHeartFill, GoSmiley } from "react-icons/go";
 import { BiSend } from "react-icons/bi";
+import CreatePostBox from './CreatePostBox';
 
 const NewsFeed = () => {
     return (
         <div class="box-border max-w-screen mx-4 sm:columns-1 md:columns-1 lg:columns-1 xl:columns-1">
+            <CreatePostBox />
             <article class="mb-4  p-6 rounded-xl bg-white flex flex-col shadow-md border-2">
                 <div class="flex pb-6 items-center justify-between">
                     <div class="flex">
