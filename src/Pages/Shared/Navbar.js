@@ -1,22 +1,28 @@
 import React from 'react';
+import { GoHome, GoPeople, GoMail } from "react-icons/go";
 
 const Navbar = () => {
     return (
         <div className="navbar bg-base-10 mt-2">
             <div className="navbar-start">
-                <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-                    </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a href='/'>Feed</a></li>
-                        <li><a href='/'>Profile</a></li>
-                        <li><a href='/'>Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div className="navbar-center">
                 <a href='/' className="btn btn-ghost text-xl">Appifylab Social</a>
+            </div>
+            <div className="navbar-center hidden lg:flex gap-7">
+                <div class="flex items-center gap-2">
+                    <div className='p-3 bg-gray-300 rounded-md border-b-4 border-primary'>
+                        <GoHome className='w-8 h-6 text-secondary' />
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div className='p-3'>
+                        <GoPeople className='w-8 h-6 text-gray-400' />
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div className='p-3'>
+                        <GoMail className='w-8 h-6 text-gray-400' />
+                    </div>
+                </div>
             </div>
             <div className="navbar-end">
                 <button className="btn btn-ghost btn-circle">
