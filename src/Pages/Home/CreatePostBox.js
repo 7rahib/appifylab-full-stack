@@ -1,11 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 const CreatePostBox = () => {
 
-    const email = 'rahib@gmail.com';
+    const user = useAuthState(auth);
+    const email = user[0].email;
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
