@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import CommentRow from './CommentRow';
+import swal from 'sweetalert';
 
 const NewsFeedRow = ({ allPost, refecth }) => {
     const { _id, email, description, img } = allPost;
@@ -37,6 +38,31 @@ const NewsFeedRow = ({ allPost, refecth }) => {
             });
     }
 
+    const handleDelete = (_id) => {
+        swal({
+            title: "Are you sure?",
+            text: "This Post will be deleted.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`http://localhost:5000/posts/${_id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'content-type': 'application/json',
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            refetch()
+                        })
+                } else {
+                }
+            });
+    }
+
     return (
         <article class="mb-4 p-6 rounded-xl bg-white flex flex-col shadow-md border-2">
             <div class="flex pb-6 items-center justify-between">
@@ -48,10 +74,13 @@ const NewsFeedRow = ({ allPost, refecth }) => {
                         <div class="flex items-center">
                             <div class="inline-block text-md font-bold mr-2" href="/">Naimur Rashid Rahib</div>
                             <span class="text-slate-500 text-sm">25 minutes ago</span>
+
                         </div>
                         <div class="text-slate-500 text-sm">
                             Software Developer
+                            <button onClick={() => handleDelete(_id)} className='btn btn-xs btn-ghost ml-2'>Delete</button>
                         </div>
+
                     </div>
                 </div>
             </div>
