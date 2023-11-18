@@ -84,7 +84,7 @@ const NewsFeedRow = ({ allPost, refecth }) => {
                     </div>
                 </div>
             </div>
-            <h2 class="text-3xl font-extrabold">
+            <h2 class="text-2xl font-bold">
                 {description}
             </h2>
             <div class="py-4">
