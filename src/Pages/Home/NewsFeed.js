@@ -6,7 +6,7 @@ import Loading from '../Shared/Loading';
 
 const NewsFeed = () => {
 
-    const { data: allPosts, isLoading, refetch } = useQuery('allPosts', () => fetch('http://localhost:5000/posts').then(res => res.json()))
+    const { data: allPosts, isLoading, refetch } = useQuery('allPosts', () => fetch('https://appifylab-full-stack-server-production.up.railway.app/posts').then(res => res.json()))
 
     if (isLoading) {
         <Loading></Loading>

@@ -42,7 +42,7 @@ const CreatePostBox = () => {
                     };
 
                     // Upload the image URL to the database
-                    const databaseResponse = await fetch(`http://localhost:5000/createpost`, {
+                    const databaseResponse = await fetch(`https://appifylab-full-stack-server-production.up.railway.app/createpost`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -70,7 +70,7 @@ const CreatePostBox = () => {
             };
 
             // Upload the random image URL to the database
-            const databaseResponse = await fetch(`http://localhost:5000/createpost`, {
+            const databaseResponse = await fetch(`https://appifylab-full-stack-server-production.up.railway.app/createpost`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

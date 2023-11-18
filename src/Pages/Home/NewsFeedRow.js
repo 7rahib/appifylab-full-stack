@@ -12,11 +12,11 @@ const NewsFeedRow = ({ allPost, refetch }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const navigate = useNavigate();
 
-    const { data: individualComments } = useQuery('individualComments', () => fetch(`http://localhost:5000/comment/${_id}`).then(res => res.json()))
+    const { data: individualComments } = useQuery('individualComments', () => fetch(`https://appifylab-full-stack-server-production.up.railway.app/comment/${_id}`).then(res => res.json()))
 
     const handleLike = _id => {
 
-        fetch(`http://localhost:5000/post/like/${_id}`, {
+        fetch(`https://appifylab-full-stack-server-production.up.railway.app/post/like/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -36,7 +36,7 @@ const NewsFeedRow = ({ allPost, refetch }) => {
     };
 
     const handleRemoveLike = (_id) => {
-        fetch(`http://localhost:5000/post/removeLike/${_id}`, {
+        fetch(`https://appifylab-full-stack-server-production.up.railway.app/post/removeLike/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -57,7 +57,7 @@ const NewsFeedRow = ({ allPost, refetch }) => {
             postId: _id,
             comment: data.comment
         };
-        fetch("http://localhost:5000/postComment", {
+        fetch("https://appifylab-full-stack-server-production.up.railway.app/postComment", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -85,7 +85,7 @@ const NewsFeedRow = ({ allPost, refetch }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/posts/${_id}`, {
+                    fetch(`https://appifylab-full-stack-server-production.up.railway.app/posts/${_id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',

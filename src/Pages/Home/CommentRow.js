@@ -16,7 +16,7 @@ const CommentRow = ({ individualComment, refetch }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/comment/${_id}`, {
+                    fetch(`https://appifylab-full-stack-server-production.up.railway.app/comment/${_id}`, {
                         method: 'DELETE',
                         headers: {
                             'content-type': 'application/json',
@@ -33,7 +33,7 @@ const CommentRow = ({ individualComment, refetch }) => {
 
     const handleCommentLike = _id => {
 
-        fetch(`http://localhost:5000/comment/like/${_id}`, {
+        fetch(`https://appifylab-full-stack-server-production.up.railway.app/comment/like/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -53,7 +53,7 @@ const CommentRow = ({ individualComment, refetch }) => {
     };
 
     const handleRemoveCommentLike = (_id) => {
-        fetch(`http://localhost:5000/comment/removeLike/${_id}`, {
+        fetch(`https://appifylab-full-stack-server-production.up.railway.app/comment/removeLike/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
