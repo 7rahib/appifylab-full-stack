@@ -1,6 +1,4 @@
 import React from 'react';
-import { GoHeartFill } from "react-icons/go";
-import { BiSend } from "react-icons/bi";
 import CreatePostBox from './CreatePostBox';
 import { useQuery } from 'react-query';
 import NewsFeedRow from './NewsFeedRow';

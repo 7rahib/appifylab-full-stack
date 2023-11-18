@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../Shared/Loading';
-import bg from '../../images/whitebg.jpg';
 
 
 const CreatePostBox = () => {
@@ -11,67 +9,8 @@ const CreatePostBox = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate();
     const imageStorageKey = 'a1d7d3a7e4fde5cadc71e0a2315af238';
-
-    // const onSubmit = (data) => {
-    //     const newPost = {
-    //         email: email,
-    //         description: data.description
-    //     };
-    //     fetch("", {
-    //         method: "POST",
-    //         headers: {
-    //             "content-type": "application/json",
-    //         },
-    //         body: JSON.stringify(newPost),
-    //     })
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //             if (data.insertedId) {
-    //                 console.log(data);
-    //                 navigate('/');
-    //             }
-    //         });
-    // }
-    // const onSubmit = (data) => {
-    //     const randomImage = 'https://i.ibb.co/NrMG7MP/whitebg.jpg';
-    //     const formData = new FormData();
-    //     const image = data.image && data.image[0] ? data.image[0] : bg;
-    //     console.log(data.image[0]);
-    //     console.log(bg);
-    //     formData.append('image', image);
-    //     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-    //     fetch(url, {
-    //         method: 'POST',
-    //         body: formData
-    //     }).then(res => res.json())
-    //         .then(result => {
-    //             if (result.success) {
-    //                 const img = result.data.url;
-    //                 const newPost = {
-    //                     img: img,
-    //                     email: email,
-    //                     description: data.description
-    //                 };
-    //                 fetch(`http://localhost:5000/createpost`, {
-    //                     method: 'POST',
-    //                     headers: {
-    //                         'content-type': 'application/json'
-    //                     },
-    //                     body: JSON.stringify(newPost)
-    //                 }).then(res => res.json())
-    //                     .then(data => {
-    //                         if (data.insertedId) {
-    //                             reset();
-    //                             navigate('/');
-    //                         }
-    //                     })
-    //             }
-    //         })
-    // }
 
     const onSubmit = async (data) => {
         // Check if an image is selected

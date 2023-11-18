@@ -1,6 +1,5 @@
 import React from 'react';
-import { GoHeartFill, GoSmiley } from "react-icons/go";
-import { BiSend } from "react-icons/bi";
+import { GoHeartFill } from "react-icons/go";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -12,7 +11,7 @@ const NewsFeedRow = ({ allPost, refecth }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const navigate = useNavigate();
 
-    const { data: individualComments, isLoading, refetch } = useQuery('individualComments', () => fetch(`http://localhost:5000/comment/${_id}`).then(res => res.json()))
+    const { data: individualComments, refetch } = useQuery('individualComments', () => fetch(`http://localhost:5000/comment/${_id}`).then(res => res.json()))
 
     const onSubmit = (data) => {
         const newComment = {
@@ -42,12 +41,12 @@ const NewsFeedRow = ({ allPost, refecth }) => {
         <article class="mb-4 p-6 rounded-xl bg-white flex flex-col shadow-md border-2">
             <div class="flex pb-6 items-center justify-between">
                 <div class="flex">
-                    <a class="inline-block mr-4" href="/">
+                    <div class="inline-block mr-4" href="/">
                         <img class="rounded-full max-w-none w-14 h-14" src="https://avatars.githubusercontent.com/u/61423411?v=4" alt='Naimur Rashid Rahib' />
-                    </a>
+                    </div>
                     <div class="flex flex-col">
                         <div class="flex items-center">
-                            <a class="inline-block text-md font-bold mr-2" href="/">Naimur Rashid Rahib</a>
+                            <div class="inline-block text-md font-bold mr-2" href="/">Naimur Rashid Rahib</div>
                             <span class="text-slate-500 text-sm">25 minutes ago</span>
                         </div>
                         <div class="text-slate-500 text-sm">
@@ -60,17 +59,17 @@ const NewsFeedRow = ({ allPost, refecth }) => {
                 {description}
             </h2>
             <div class="py-4">
-                <a class="flex" href="/">
+                <div class="flex" href="/">
                     <img class="max-w-full rounded-lg" src={img} />
-                </a>
+                </div>
             </div>
             <div class="py-4">
-                <a class="inline-flex items-center" href="/">
+                <div class="inline-flex items-center" href="/">
                     <span class="mr-2">
                         <GoHeartFill className='text-rose-600 w-6 h-6' />
                     </span>
-                    <span class="text-md">68</span>
-                </a>
+                    <span class="text-md">1</span>
+                </div>
             </div>
             <div class="relative">
                 <form onSubmit={handleSubmit(onSubmit)}>
