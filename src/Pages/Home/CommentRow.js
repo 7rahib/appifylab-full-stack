@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoHeartFill } from "react-icons/go";
+import { GoHeartFill, GoHeart } from "react-icons/go";
 import swal from 'sweetalert';
 
 const CommentRow = ({ individualComment, refetch }) => {
@@ -31,6 +31,42 @@ const CommentRow = ({ individualComment, refetch }) => {
             });
     }
 
+    const handleCommentLike = _id => {
+
+        fetch(`http://localhost:5000/comment/like/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            }
+        })
+            .then(res => {
+                if (res.status === 403) {
+                    swal('Failed to like this comment');
+                }
+                return res.json()
+            })
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    refetch();
+                }
+            })
+    };
+
+    const handleRemoveCommentLike = (_id) => {
+        fetch(`http://localhost:5000/comment/removeLike/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            }
+        })
+            .then(res => { return res.json() })
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    refetch();
+                }
+            })
+    };
+
     return (
         <div class="media flex pb-4">
             <div class="mr-4" href="/">
@@ -47,10 +83,7 @@ const CommentRow = ({ individualComment, refetch }) => {
                 </p>
                 <div class="mt-2 flex items-center">
                     <div class="inline-flex items-center py-2 mr-3" href="/">
-                        <span class="mr-2">
-                            <GoHeartFill className='text-rose-600 w-6 h-6' />
-                        </span>
-                        <span class="text-base">1</span>
+                        {(individualComment.role ? <button onClick={() => handleRemoveCommentLike(_id)}><GoHeartFill className='text-rose-600 w-6 h-6' />1</button> : <button onClick={() => handleCommentLike(_id)}><GoHeart className='text-rose-600 w-6 h-6' /></button>)}
                     </div>
                     <button class="py-2 px-4 hover:bg-slate-200  rounded-lg">
                         Reply

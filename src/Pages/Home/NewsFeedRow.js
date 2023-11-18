@@ -1,18 +1,55 @@
 import React from 'react';
-import { GoHeartFill } from "react-icons/go";
+import { GoHeartFill, GoHeart } from "react-icons/go";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import CommentRow from './CommentRow';
 import swal from 'sweetalert';
 
-const NewsFeedRow = ({ allPost, refecth }) => {
+const NewsFeedRow = ({ allPost, refetch }) => {
     const { _id, email, description, img } = allPost;
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const navigate = useNavigate();
 
-    const { data: individualComments, refetch } = useQuery('individualComments', () => fetch(`http://localhost:5000/comment/${_id}`).then(res => res.json()))
+    const { data: individualComments } = useQuery('individualComments', () => fetch(`http://localhost:5000/comment/${_id}`).then(res => res.json()))
+
+    const handleLike = _id => {
+
+        fetch(`http://localhost:5000/post/like/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            }
+        })
+            .then(res => {
+                if (res.status === 403) {
+                    swal('Failed to like this post');
+                }
+                return res.json()
+            })
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    refetch();
+                }
+            })
+    };
+
+    const handleRemoveLike = (_id) => {
+        fetch(`http://localhost:5000/post/removeLike/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            }
+        })
+            .then(res => { return res.json() })
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    refetch();
+                }
+            })
+    };
+
 
     const onSubmit = (data) => {
         const newComment = {
@@ -94,10 +131,7 @@ const NewsFeedRow = ({ allPost, refecth }) => {
             </div>
             <div class="py-4">
                 <div class="inline-flex items-center" href="/">
-                    <span class="mr-2">
-                        <GoHeartFill className='text-rose-600 w-6 h-6' />
-                    </span>
-                    <span class="text-md">1</span>
+                    {(allPost.role ? <button onClick={() => handleRemoveLike(_id)}><GoHeartFill className='text-rose-600 w-6 h-6' />1</button> : <button onClick={() => handleLike(_id)}><GoHeart className='text-rose-600 w-6 h-6' /></button>)}
                 </div>
             </div>
             <div class="relative">
